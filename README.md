@@ -32,7 +32,18 @@ end
 
 Once again, our `#each` method is yielding each element of the array to the accompanying block. The code in the block is executed, using each successive element from the array, as the iteration proceeds.
 
-But how do `#each` and the other iterators like `#collect` actually pass, or yield, each successive element to the accompanying block? Under the hood, these methods rely on the `yield` keyword.
+## But...why?
+
+This might be hard to understand at this early point in your programming career, but programs are pretty much:
+
+* Data we manipulate
+* Actions that change the data (behavior)
+
+Sometimes we want to pass "data" to a method. A `sum` method would expect to have two numbers passed into it. A `multiply` method would expect to hae two numbers passed into it. These are examples of passing _data_. But what if you could pass a _behavior_ to a method. You might write `artihmetic(number1, number2, the_concept_of_multiplication)`, but if you wrote this, you could also do `arithmetic(number1, number2, the_concept_of_division)`. As you grow more powerful in the magic of Ruby, this will seem less and less strange. Many Rubyists _use_ blocks for a long time before they ever _write_ code that uses blocks. That's OK. Even if you don't feel confident _writing_ blocks after this lesson, you can develop some empathy for how Ruby is _thinking_ when we use functions that "take blocks." We'll return to this example at the end.
+
+## "What's Happening In There, Ruby?"
+
+But how do `#each` and the other iterators like `#collect` actually pass, or yield, each successive element to the accompanying block? These methods rely on the `yield` keyword.
 
 Let's take a closer look at `yield` and try to build our own custom methods that utilize it.
 

@@ -32,7 +32,37 @@ end
 
 Once again, our `#each` method is yielding each element of the array to the accompanying block. The code in the block is executed, using each successive element from the array, as the iteration proceeds.
 
-But how do `#each` and the other iterators like `#collect` actually pass, or yield, each successive element to the accompanying block? Under the hood, these methods rely on the `yield` keyword.
+## But...why?
+
+Programs are pretty much:
+
+* Data we manipulate
+* Actions that change the data (behavior)
+
+We often pass "data" to a method. A `sum` method would expect to have two numbers passed into it. A `multiply` method would expect to hae two numbers passed into it. These are examples of passing _data_.
+
+But what if you could pass a _behavior_ to a method. You might write:
+
+```ruby
+list_builder("Feed Byron", "Go Shopping")
+```
+
+And it could return
+
+```text
+* Feed Byron
+* Go Shopping
+```
+
+But what if you wanted to use `-` instead of `*`? Well, you could pass this character as a third argument.
+
+But what if you wanted to use `==>` **and** make everything UPPERCASE? You _could_ write complex conditional logic inside the method. OR you can pass _behavior_ by passing a _block_.
+
+As you grow more powerful in the magic of Ruby, this will seem less and less strange. Many Rubyists _use_ blocks for a long time before they ever _write_ code that uses blocks. That's OK. Even if you don't feel confident _writing_ blocks after this lesson, you can develop some empathy for how Ruby is _thinking_ when we use functions that "take blocks." We'll show you how to write a flexible `list_builder` at the end ;)
+
+## "What's Happening In There, Ruby?"
+
+But how do `#each` and the other iterators like `#collect` actually pass, or yield, each successive element to the accompanying block? These methods rely on the `yield` keyword.
 
 Let's take a closer look at `yield` and try to build our own custom methods that utilize it.
 
@@ -294,5 +324,26 @@ You can read more about the `yield` keyword and blocks in Ruby from the resource
 * [About.com](http://ruby.about.com/) - [Block Parameters and Yielding](http://ruby.about.com/od/beginningruby/a/Block-Parameters-And-Yielding.htm)
 * [Reactive's Tips](http://www.reactive.io/tips/) - [Understanding Ruby Blocks, Procs, and Lambdas](http://www.reactive.io/tips/2008/12/21/understanding-ruby-blocks-procs-and-lambdas)
 * [Mix&Go](https://mixandgo.com/) - [Mastering-ruby-blocks-in-less-than-5-minutes](https://mixandgo.com/blog/mastering-ruby-blocks-in-less-than-5-minutes)
+
+## List-Builder Code
+
+```ruby
+# In all likelihood, we'd probably want to take an Array of items versus just
+# two, but you can update this code to do that yourself!
+#
+
+def list_builder(item1, item2)
+  puts yield(item1)
+  puts yield(item2)
+end
+
+list_builder("Walk Byron", "Throw Byron's Frisbee") do |item|
+  "==> #{item.upcase}"
+end
+
+#=> ==> WALK BYRON
+#=> ==> THROW BYRON'S FRISBEE
+```
+
 
 <p data-visibility='hidden'>View <a href='https://learn.co/lessons/yield-and-blocks' title='Yield and Blocks'>Yield and Blocks</a> on Learn.co and start learning to code for free.</p>

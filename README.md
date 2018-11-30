@@ -58,7 +58,7 @@ But what if you wanted to use `-` instead of `*`? Well, you could pass this char
 
 But what if you wanted to use `==>` **and** make everything UPPERCASE? You _could_ write complex conditional logic inside the method. OR you can pass _behavior_ by passing a _block_.
 
-As you grow more powerful in the magic of Ruby, this will seem less and less strange. Many Rubyists _use_ blocks for a long time before they ever _write_ code that uses blocks. That's OK. Even if you don't feel confident _writing_ blocks after this lesson, you can develop some empathy for how Ruby is _thinking_ when we use functions that "take blocks." We'll return to this example at the end. Oh, and we'll show you how to write `list_builder` at the end ;)
+As you grow more powerful in the magic of Ruby, this will seem less and less strange. Many Rubyists _use_ blocks for a long time before they ever _write_ code that uses blocks. That's OK. Even if you don't feel confident _writing_ blocks after this lesson, you can develop some empathy for how Ruby is _thinking_ when we use functions that "take blocks." We'll show you how to write a flexible `list_builder` at the end ;)
 
 ## "What's Happening In There, Ruby?"
 
